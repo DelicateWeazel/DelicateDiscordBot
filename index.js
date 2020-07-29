@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 
-//-------------------Debugy thing--------------------\\
+//-------------------Debugy thing-------------------\\
 const testing = true;
 function testing(message) {
     if (testing) {
@@ -11,3 +11,5 @@ function testing(message) {
     }
 }
 //-------------------Debugy thing--------------------\\
+
+//TEST

@@ -28,10 +28,14 @@ bot.on("ready", () => {
 });
 
 bot.on("message", message => {
-    //make a embed and send it to #info
+    const info = new Discord.MessageEmbed()
+    .setColor('#029AA')
+    .setTitle('Info')
+    .addField("Place Holder", "PlaceHolder")
+    .setTimestamp();
     
     
-    if (message.content === '-test') {
+    if (message.content === '-info') {
         if (message.author.bot) return; //prevents the bot from replying to itself
     infoChannel = bot.channels.cache.get('738107502255669336')
     

@@ -5,12 +5,14 @@ const bot = new Discord.Client();
 
 //-------------------Debugy thing-------------------\\
 const testing = true;
-function testing(message) {
+function test(message) {
     if (testing) {
         console.log("TESTING: " + message);
     }
 }
 //-------------------Debugy thing--------------------\\
 
-//TEST
-//TEST 2
+
+//-------------and it does display-------------\\
+//test("this should display");
+//-------------and it does display-------------\\

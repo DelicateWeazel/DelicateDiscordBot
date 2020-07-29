@@ -1,0 +1,19 @@
+{
+  "name": "delicatediscordbot",
+  "version": "0.0.1",
+  "description": "a discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DelicateWeazel/DelicateDiscordBot.git"
+  },
+  "author": "DelicateWeazel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DelicateWeazel/DelicateDiscordBot/issues"
+  },
+  "homepage": "https://github.com/DelicateWeazel/DelicateDiscordBot#readme"
+}

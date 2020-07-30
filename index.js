@@ -27,6 +27,21 @@ bot.on("ready", () => {
     generalChannel.send("Hello, World! I am online :)")
 });
 
+
+//-------------Commands-------------\\
+bot.on("message", message => {
+    const cmdlist = new Discord.MessageEmbed()
+    .setColor('#FFC0CB')
+    .setTitle('Commands List')
+    .addField('Help', 'Displays command listing')
+    .addField('Info', 'Displays info about server and bot')
+    .setThumbnail('https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Blue_question_mark_icon.svg/1200px-Blue_question_mark_icon.svg.png')
+    .setTimestamp();
+    if (message.content === '-help'){
+      message.reply(cmdlist)
+    
+    }
+})
 bot.on("message", message => {
     const info = new Discord.MessageEmbed()
     .setColor('#029AA')
@@ -42,10 +57,13 @@ bot.on("message", message => {
     infoChannel.send(info)
   }
 });
+//-------------Commands-------------\\
 
-bot.on("guildMemberAdd" , () => {
-    //nothing
+
+
+bot.on("guildMemberAdd" , member => {
+    testing(`user ${member.tag} has joined`); //just wanna see if what i did actually work
 });
 
-bot.login(nothing to see here);
+bot.login(nothingtoseehere);
 //-------------Discord Bot-------------\\

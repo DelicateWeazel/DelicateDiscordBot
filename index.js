@@ -1,6 +1,7 @@
 //Start
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const package = require("./package.json");
 
 
 //-------------------Debugy thing-------------------\\
@@ -46,15 +47,17 @@ bot.on("message", message => {
     const info = new Discord.MessageEmbed()
     .setColor('#029AA')
     .setTitle('Info')
-    .addField("Place Holder", "PlaceHolder")
+    .addField("github repository", '[My GitHub](https://github.com/DelicateWeazel/DelicateDiscordBot)')
+    .addField("Version", "v" + package.version)
+    
     .setTimestamp();
     
     
     if (message.content === '-info') {
         if (message.author.bot) return; //prevents the bot from replying to itself
-    infoChannel = bot.channels.cache.get('738107502255669336')
     
-    infoChannel.send(info)
+    
+    message.author.send(info)
   }
 });
 //-------------Commands-------------\\
@@ -62,8 +65,11 @@ bot.on("message", message => {
 
 
 bot.on("guildMemberAdd" , member => {
-    testing(`user ${member.tag} has joined`); //just wanna see if what i did actually work
+    test(`user ${member} has joined`); 
+    joinlog = bot.channels.cache.get('738753778932645939')
+    joinlog.send(`${member} has joined`)
+
 });
 
-bot.login(nothingtoseehere);
+bot.login(NothingToSeeHere);
 //-------------Discord Bot-------------\\

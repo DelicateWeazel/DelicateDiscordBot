@@ -2,6 +2,11 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const package = require("./package.json");
+const channelss = require("./channels.json")
+
+//Note to self: FINISH ADDING ALL THE STUFFS FOR THE BOT(ON)DO(THING) tyvm
+//PS. also make sure they work aswel ty
+
 
 
 //-------------------Debugy thing-------------------\\
@@ -21,12 +26,6 @@ function test(message) {
 
 //-------------Discord Bot-------------\\
 
-bot.on("ready", () => {
-    generalChannel = bot.channels.cache.get('731959489036812310')
-    test(`${bot.user.tag} is now online`)
-   
-    generalChannel.send("Hello, World! I am online :)")
-});
 
 
 //-------------Commands-------------\\
@@ -62,14 +61,50 @@ bot.on("message", message => {
 });
 //-------------Commands-------------\\
 
+//-------------on(thing) do (thing)-------------
+bot.on("ready", () => {
+    test(`${bot.user.tag} is now online`)
+    bot.channels.cache.get(channelss.general).send("Hello, World! I am online :)")
+});
 
 
 bot.on("guildMemberAdd" , member => {
+    const memberJoin = new Discord.MessageEmbed()
+    .setTitle('guildMemberAdd')
+    .addField('User', `${member}`)
+    .addField('Has joined', `${guild.name}`)
+    .setTimestamp();
     test(`user ${member} has joined`); 
-    joinlog = bot.channels.cache.get('738753778932645939')
-    joinlog.send(`${member} has joined`)
+    bot.channels.cache.get(channelss["member-log"]).send(memberJoin);
 
 });
+
+bot.on("guildMemberRemove", member => {
+    const memberLeave = new Discord.MessageEmbed()
+    .setTitle('guildMemberRemove')
+    .addField('User', `${member}`)
+    .addField('Has left or been banned from', `${guild.name}`)
+    .setTimestamp();
+    test(`user ${member} has left or been kicked`);
+    bot.channels.cache.get(channelss["member-log"]).send(memberLeave);
+});
+
+bot.on("guildBanAdd", async (guild, user) => {
+    test(`user ${user.tag} has been banned`);
+    memberlog = bot.channels.cache.get('738753778932645939')
+    memberlog.send(`${user.tag} has been banned`)
+});
+bot.on("messageDelete", message => {
+    const deletedText = new Discord.MessageEmbed()
+    .setTitle('messageDeleted')
+    .addField('Message from', `${message.author.tag}`)
+    .addField('Has been deleted in', `${message.channel.name}`)
+    .addField('With the contents', `${message.content}`)
+    .setTimestamp();
+    test(`message from ${message.author.tag} has been deleted in ${message.channel.name}, message contents >: ${message.content}`)
+    bot.channels.cache.get(channelss["text-log"]).send(deletedText)
+})
+//-------------on(thing) do (thing)-------------
 
 bot.login(NothingToSeeHere);
 //-------------Discord Bot-------------\\
